@@ -30,7 +30,27 @@ test('Should be under 1600', () => {
   expect(load1 + load2).toBeLessThanOrEqual(1600);
 })
 
-// Test regEx
+// RegEx test
 test('There is no I in Theam', () => {
   expect('team').not.toMatch(/I/);
+})
+
+// Array test
+test('Admin should be in usernames', () => {
+  usernames = ['John', 'Karen', 'Admin']
+  expect(usernames).toContain('Admin')
+})
+
+// Working with async data (Promise)
+test('Fetch user with name Leanne Graham', () => {
+  expect.assertions(1);
+  return functions.fetchUser().then(data => {
+    expect(data.name).toBe('Leanne Graham')
+  })
+})
+
+// Working with async data (Async await)
+test('Fetch user with name Leanne Graham', async () => {
+  const data = await functions.fetchUser();
+  expect(data.name).toBe('Leanne Graham')
 })
